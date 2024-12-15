@@ -13,6 +13,20 @@ pub enum UserRole {
     Agent,
 }
 
+// Add this implementation
+impl std::fmt::Display for UserRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        // Convert enum variant to lowercase string
+        match self {
+            UserRole::Seller => write!(f, "seller"),
+            UserRole::Buyer => write!(f, "buyer"),
+            UserRole::Owner => write!(f, "owner"),
+            UserRole::Tenant => write!(f, "tenant"),
+            UserRole::Agent => write!(f, "agent"),
+        }
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NewUser {
     pub email: String,
@@ -35,6 +49,8 @@ pub struct User {
     pub profile_image_url: Option<String>,
     pub created_at: Option<String>,
     pub updated_at: Option<String>,
+    pub reset_token: Option<String>,
+    pub reset_token_expires: Option<String>,
 }
 
 // ------------- Properties --------------------
@@ -162,4 +178,12 @@ pub struct ConversationDetails {
     pub property_title: String,
     pub unread_count: i64,
     pub created_at: Option<String>,
+}
+
+// -------------- Authentication -----------
+
+#[derive(Debug, Deserialize)]
+pub struct LoginCredentials {
+    pub email: String,
+    pub password: String,
 }

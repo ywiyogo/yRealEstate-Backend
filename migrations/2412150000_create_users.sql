@@ -8,5 +8,7 @@ CREATE TABLE users (
     verified BOOLEAN DEFAULT FALSE,
     profile_image_url TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    reset_token TEXT,
+    reset_token_expires DATETIME
 );

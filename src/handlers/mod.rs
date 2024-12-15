@@ -1,7 +1,9 @@
-mod users;
+mod authentication;
 mod messages;
 mod properties;
+mod users;
 
-pub use users::*;
+pub use authentication::*;
 pub use messages::*;
 pub use properties::*;
+pub use users::*;
